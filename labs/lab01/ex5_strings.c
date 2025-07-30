@@ -5,7 +5,7 @@
 int main() {
   // DONE: Create space to store the string "hello"
   // Hint: how many bytes do we need to store this string?
-  char hello_str[strlen("hello")+1];
+  char hello_str[sizeof("hello")];
 
   // DONE: store the characters one at a time
   // Hint: don't forget the null terminator
@@ -26,14 +26,15 @@ int main() {
   printf("length of hello: %lu\n", strlen(hello_str));
 
   // DONE: create space to store the string "world"
-  char world_str[strlen("world")+1];
+  char world_str[sizeof("world")];
 
   // DONE: fill in the type
   // Note: this automatically stores the string "world" in static memory
   //       but static memory is immutable, so you may need to copy it
   //       to the stack or the heap
-  char* static_world_str = "world";
+  // // char* static_world_str = "world";
   // // char static_world_str[] = "world"; // ! wouldn't be static
+  static const char static_world_str[] = "world"; // * see https://godbolt.org/z/drTcMxcnE
 
   // DONE: use strcpy and static_world_str to store "world" into world_str
   // Hint: strcpy takes two arguments:
@@ -51,7 +52,7 @@ int main() {
   printf("address of 'r': %p\n", ptr_to_r);
 
   // DONE: create space to store the string "hello world"
-  char hello_world_str[strlen(hello_str)+strlen(world_str)+1];
+  char hello_world_str[sizeof("hello world")];
 
   // DONE: use strcpy and hello_str to store
   //       the string "hello" into hello_world_str
