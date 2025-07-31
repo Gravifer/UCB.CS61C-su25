@@ -132,7 +132,7 @@ void vector_set(vector_t *v, size_t loc, int value) {
         if (v->data == NULL) {
             allocation_failed();
         }
-        for (int i = v->size; i < loc; i++) {
+        for (size_t i = v->size; i < loc; i++) {
             v->data[i] = 0;
         }
         v->size = loc + 1;
