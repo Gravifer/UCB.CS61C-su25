@@ -42,30 +42,30 @@ vector_t *vector_new() {
     vector_t *retval;
 
     /* First, we need to allocate memory on the heap for the struct */
-    retval = /* YOUR CODE HERE */
+    retval = /* YOUR CODE HERE */ malloc(sizeof(struct vector_t));
 
     /* Check our return value to make sure we got memory */
-    if (/* YOUR CODE HERE */) {
+    if (/* YOUR CODE HERE */ retval == NULL) {
         allocation_failed();
     }
 
     /* Now we need to initialize our data.
        Since retval->data should be able to dynamically grow,
        what do you need to do? */
-    retval->size = /* YOUR CODE HERE */;
-    retval->data = /* YOUR CODE HERE */;
+    retval->size = /* YOUR CODE HERE */ 1;
+    retval->data = /* YOUR CODE HERE */ malloc(retval->size * sizeof(int));
 
     /* Check the data attribute of our vector to make sure we got memory */
-    if (/* YOUR CODE HERE */) {
+    if (/* YOUR CODE HERE */ retval->data == NULL) {
         free(retval);				//Why is this line necessary?
         allocation_failed();
     }
 
     /* Complete the initialization by setting the single component to zero */
-    /* YOUR CODE HERE */ = 0;
+    /* YOUR CODE HERE */ retval->data[0] = 0;
 
     /* and return... */
-    return NULL; /* UPDATE RETURN VALUE */
+    return retval; /* UPDATE RETURN VALUE */
 }
 
 /* Return the value at the specified location/component "loc" of the vector */
@@ -89,6 +89,39 @@ int vector_get(vector_t *v, size_t loc) {
    Remember, you need to free up ALL the memory that was allocated. */
 void vector_delete(vector_t *v) {
     /* YOUR CODE HERE */
+    if (v == NULL) {
+        fprintf(stderr, "vector_delete: passed a NULL vector.\n");
+        return; // Nothing to delete
+    }
+    if (v->data != NULL) {
+        free(v->data); // Free the data array
+    }
+    free(v); // Free the vector struct itself
+    /*  Note: Setting v to NULL here does not affect the caller's pointer,
+        as it is passed by value. The caller's pointer will still point to the
+        original memory location, which is now freed.
+        This is why it's a good practice to set the pointer to NULL after freeing,
+        but it won't change the caller's pointer.
+        If you want to ensure the caller's pointer is set to NULL, you would need
+        to pass a pointer to the pointer (i.e., a double pointer) or return the
+        pointer and assign it in the caller.
+        Example of setting the caller's pointer to NULL:
+        ```
+            void vector_delete(vector_t **v) {
+                if (v == NULL || *v == NULL) return; // Check for NULL pointer
+                if ((*v)->data != NULL) {
+                    free((*v)->data); // Free the data array
+                }
+                free(*v); // Free the vector struct itself
+                *v = NULL; // Set the caller's pointer to NULL
+            }
+        ```
+        This way, the caller's pointer will be set to NULL after deletion.
+        Note: The above comment is just an explanation of how to handle the pointer
+        in a way that the caller's pointer is also updated. The original function
+        does not do this, so the caller's pointer will still point to the freed memory.
+        This can lead to undefined behavior if the caller tries to access the freed memory.
+        Always ensure to handle pointers carefully to avoid memory leaks or segmentation faults. */
 }
 
 /* Set a value in the vector, allocating additional memory if necessary. 
