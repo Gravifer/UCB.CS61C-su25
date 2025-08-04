@@ -26,8 +26,23 @@ main:
 # a0 contains the number which we want to compute the factorial of
 # The return value should be stored in a0
 factorial:
-    # YOUR CODE HERE
-
+    # // YOUR CODE HERE
+    blt a0, x0, invalid   #* reject negative numbers
+    li t0, 1              # accumulator
+    beq a0, x0, done      # If a0 == 0, return 1
+    li t1, 1              # counter
+  loop:
+    bgt t1, a0, done      # If t1 > a0, we're done
+    mul t0, t0, t1        # t0 *= t1
+    addi t1, t1, 1        # t1++
+    j loop
+  invalid:
+    # // li a0, -1             # Return -1 for invalid input
+    li a0, 17             #* syscall 17 - exit with errno
+    li a1, 1              # errno 1
+    ecall                 #* Abort
+  done:
+    mv a0, t0             # Move result to a0
     # This is how you return from a function. You'll learn more about this later.
     # This should be the last line in your program.
     jr ra
