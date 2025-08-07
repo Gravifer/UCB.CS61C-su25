@@ -1,0 +1,6 @@
+# Auto-generated assembly files
+test-src/
+
+# Test output files
+output.bin
+*-output.bin
