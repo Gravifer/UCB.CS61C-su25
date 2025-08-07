@@ -588,4 +588,4 @@ cython_debug/
 #.idea/
 
 ### 61C Lab ###
-!/*/tests/reference-output/*.out
+!/labs/*/tests/reference-output/*.out
