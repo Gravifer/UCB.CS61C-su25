@@ -1,12 +1,16 @@
 {
 	"folders": [
 		{
-      		"name": "CS61C",
+			"name": "CS61C",
 			"path": ".."
 		},
 		{
-      		"name": "Project-1",
+			"name": "Project-1",
 			"path": "../projs/proj1"
+		},
+		{
+			"name": "Project-2",
+			"path": "../projs/proj2"
 		}
 	],
 	"settings": {
