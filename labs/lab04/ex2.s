@@ -32,6 +32,8 @@ main:
 #     where ^ is the exponent operator, not XOR
 ex2:
     # Note: Add code BELOW without altering existing lines.
+    addi sp, sp, -8
+    sw ra, 4(sp)  # save return address
     sw s0 0(sp)
 
     # return 1 if a1 == 0
@@ -53,5 +55,7 @@ ex2_zero_case:
 
 ex2_end:
     lw s0 0(sp)
+    lw ra 4(sp)   # restore return address
+    addi sp, sp, 8
 
     jr ra
