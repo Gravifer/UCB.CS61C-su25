@@ -49,7 +49,11 @@ next_test:
 #
 pow:
     # BEGIN PROLOGUE
-    # FIXME: Need to save the callee saved register(s)
+    # FIXED: Need to save the callee saved register(s)
+    # @needed: ra, s0
+    addi sp, sp, -8
+    sw ra, 0(sp)
+    sw s0, 4(sp)
     # END PROLOGUE
     li s0, 1
 pow_loop:
@@ -60,7 +64,10 @@ pow_loop:
 pow_end:
     mv a0, s0
     # BEGIN EPILOGUE
-    # FIXME: Need to restore the callee saved register(s)
+    # FIXED: Need to restore the callee saved register(s)
+    lw ra, 0(sp)
+    lw s0, 4(sp)
+    addi sp, sp, 8
     # END EPILOGUE
     jr ra
 
@@ -72,9 +79,12 @@ pow_end:
 # address as argument and increments the 32-bit value stored there.
 inc_arr:
     # BEGIN PROLOGUE
-    # FIXME: What other registers need to be saved?
-    addi sp, sp, -4
+    # FIXED: What other registers need to be saved?
+    addi sp, sp, -16
     sw ra, 0(sp)
+    # @needed: s0, s1
+    sw s0, 4(sp)
+    sw s1, 8(sp)
     # END PROLOGUE
     mv s0, a0 # Copy start of array to saved register
     mv s1, a1 # Copy length of array to saved register
@@ -85,19 +95,24 @@ inc_arr_loop:
     add a0, s0, t1 # Add offset to start of array
     # Prepare to call helper_fn
     #
-    # FIXME: Add code to preserve the value in t0 before we call helper_fn
+    # FIXED: Add code to preserve the value in t0 before we call helper_fn
+    sw t0, 12(sp)
     # Also ask yourself this: why don't we need to preserve t1?
     #
     jal ra helper_fn
-    # FIXME: Restore t0
+    # FIXED: Restore t0
+    lw t0, 12(sp)
     # Finished call for helper_fn
     addi t0, t0, 1 # Increment counter
     j inc_arr_loop
 inc_arr_end:
     # BEGIN EPILOGUE
-    # FIXME: What other registers need to be restored?
+    # DONE: What other registers need to be restored?
+    lw s0, 4(sp)
+    lw s1, 8(sp)
+
     lw ra, 0(sp)
-    addi sp, sp, 4
+    addi sp, sp, 16 # // 4
     # END EPILOGUE
     jr ra
 
@@ -111,13 +126,18 @@ inc_arr_end:
 # as appropriate.
 helper_fn:
     # BEGIN PROLOGUE
-    # FIXME: YOUR CODE HERE
+    # FIXED: YOUR CODE HERE
+    # @needed: s0
+    addi sp, sp, -4
+    sw s0, 0(sp)
     # END PROLOGUE
     lw t1, 0(a0)
     addi s0, t1, 1
     sw s0, 0(a0)
     # BEGIN EPILOGUE
-    # FIXME: YOUR CODE HERE
+    # FIXED: YOUR CODE HERE
+    lw s0, 0(sp)
+    addi sp, sp, 4
     # END EPILOGUE
     jr ra
 
