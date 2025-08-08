@@ -1,7 +1,10 @@
 {
     "files.readonlyInclude": {
+        "convert.py": true,
+        "framework.py": true,
         "unittests.py": true,
         "test.sh": true,
-        "src/utils.s": true
+        "src/utils.s": true,
+        "coverage-src/*.s": true
     }
 }
