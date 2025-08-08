@@ -18,7 +18,7 @@ relu:
 
 loop_start:
     lw t0, 0(a0)      # Load current element
-    bge t0, zero, loop_continue # If element >= 0, skip negation
+    bge t0, zero, loop_continue # If element >= 0, noop
     sw x0, 0(a0)      # Set the element to 0
 
 loop_continue:
