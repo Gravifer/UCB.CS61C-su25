@@ -1,6 +1,7 @@
 {
     "files.readonlyInclude": {
         "unittests.py": true,
-        "test.sh": true
+        "test.sh": true,
+        "src/utils.s": true
     }
 }
