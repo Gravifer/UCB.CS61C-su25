@@ -1,0 +1,21 @@
+{
+    "files.readonlyInclude": {
+        "convert.py": true,
+        "framework.py": true,
+        "unittests.py": true,
+        "test.sh": true,
+        "test-src/*.s": true,
+        "src/utils.s": true,
+        "coverage-src/*.s": true
+    },
+    "material-icon-theme.folders.customClones": [
+        {
+            "name": "test-src",
+            "base": "src",
+            "color": "teal-A700",
+            "folderNames": ["test-src"],
+            "rootFolderNames": ["users"]
+        }
+    ],
+    "hexeditor.columnWidth": 4,
+}
