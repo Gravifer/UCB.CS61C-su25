@@ -1,0 +1,168 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run all tests",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "all"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Run all tests"
+        },
+        {
+            "label": "Run coverage test",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "coverage"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Run coverage test"
+        },
+        {
+            "label": "Test abs",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "test_abs"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Test abs.s"
+        },
+        {
+            "label": "Test relu",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "test_relu"
+            ],
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Test relu.s"
+        },
+        {
+            "label": "Test argmax",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "test_argmax"
+            ],
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Test argmax.s"
+        },
+        {
+            "label": "Test dot",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "test_dot"
+            ],
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Test dot.s"
+        },
+        {
+            "label": "Test matmul",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "test_matmul"
+            ],
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Test matmul.s"
+        },
+        {
+            "label": "Test read_matrix",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "test_read_matrix"
+            ],
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Test read_matrix.s"
+        },
+        {
+            "label": "Test write_matrix",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "test_write_matrix"
+            ],
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Test write_matrix.s"
+        },
+        {
+            "label": "Test classify",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "test_classify"
+            ],
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Test classify.s"
+        },
+        {
+            "label": "Test chain",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "./test.sh",
+                "test_chain"
+            ],
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "detail": "Test chain functionality"
+        }
+    ]
+}

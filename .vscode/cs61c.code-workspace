@@ -118,7 +118,7 @@
 			{
 				"type": "venus",
 				"request": "launch",
-				"name": "Launch with all views",
+				"name": "(Venus) Launch with all views",
 				"program": "${file}",
 				"stopOnEntry": true,
 				"stopAtBreakpoints": true,
