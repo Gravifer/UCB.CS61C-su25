@@ -2,6 +2,7 @@ import sys
 import unittest
 from framework import AssemblyTest, run_raw_venus, test_asm_dir, _venus_default_args
 from tools.check_hashes import check_hashes
+sys.stdout.reconfigure(encoding='utf-8') # type: ignore
 
 
 class TestAbs(unittest.TestCase):
