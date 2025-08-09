@@ -116,6 +116,57 @@
 			"useDocComment": false // (Optional) Use Doc Comments
 			}
 		],
+		"material-icon-theme.folders.customClones": [
+			{
+				"name": "test-src",
+				"base": "src",
+				"color": "teal-A700",
+				"folderNames": ["test-src"]
+			},
+			{
+				"name": "coverage-src",
+				"base": "src",
+				"color": "teal-400",
+				"folderNames": ["coverage-src"]
+			},
+			{
+				"name": "projs",
+				"base": "components",
+				"color": "blue-600",
+				"folderNames": ["projs"]
+			},
+			{
+				"name": "labs",
+				"base": "components",
+				"color": "green-500",
+				"folderNames": ["labs"]
+			},
+			{
+				"name": "proj",
+				"base": "project",
+				"color": "blue-600",
+				"folderNames": ["proj1", "proj2"]
+			},
+			{
+				"name": "lab",
+				"base": "mock",
+				"color": "green-500",
+				"folderNames": ["lab00", "lab01", "lab02", "lab03", "lab04", "lab05", "lab06", "lab07", "lab08"],
+			},
+			{
+				"name": "proj-root",
+				"base": "project",
+				"color": "#98abb5",
+				"rootFolderNames": ["proj1", "proj2"]
+			},
+			{
+				"name": "course",
+				"base": "app",
+				"color": "#98abb5",
+				"folderNames": ["CS61C", "cs61c", "cs61c-2023", "cs61c-2024"],
+				"rootFolderNames": ["CS61C", "cs61c", "cs61c-2023", "cs61c-2024"]
+			}
+		]
 	},
 	"launch": {
 		"version": "0.2.0",
