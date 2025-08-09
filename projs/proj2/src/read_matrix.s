@@ -72,19 +72,12 @@ read_matrix_fopen:
     beq a0, zero, malloc_failed # malloc failed
     mv s1, a0  # s1 = pointer to the matrix in memory
 
-    # dumb read, without any unrolling
-    li a2,  4 # read a word each time
-    mv s3, s1 # s3 = pointer to the foremost element
-read_matrix_read_elem: # *assert* remaining bytes is a multiple of 4
-    mv a0, s0 # file descriptor
-    mv a1, s3 # pointer to the element to read
-    jal fread # [stateful] reads the next 4 bytes into the matrix
-    li a2,  4 # restore a2
-    bne a0, a2, fread_failed # !not a valid binary matrix file
-
-    addi s3, s3,  4 # move to the next element in the matrix
-    addi s2, s2, -4 # decr remaining bytes by 4
-    bgtz s2, read_matrix_read_elem # if there are still bytes left to read
+    # read the matrix as a single block
+    mv a0, s0 # restore file descriptor
+    mv a1, s1 # a1 = pointer to the matrix in memory
+    mv a2, s2 # a2 = total number of bytes to read
+    jal fread # [stateful] return -> a0 = number of bytes actually read
+    bne a0, s2, fread_failed # !failed to read the matrix
 
 read_matrix_end:
     # attempt to close the file
