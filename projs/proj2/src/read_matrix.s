@@ -93,7 +93,7 @@ read_matrix_end:
     bne a0, zero, fclose_failed
 
     # if we reach here, we successfully read the matrix and closed the file
-    mv a0, s3 # a0 = pointer to the matrix
+    mv a0, s1 # a0 = pointer to the matrix
 
     # Epilogue
     lw ra, 16(sp) # restore return address
