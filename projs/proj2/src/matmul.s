@@ -2,8 +2,8 @@
 
 .data
 BLOCK_SIZE: .word 32 # todo: do block-by-block multiplication
-# //malformed_mat: .asciz "Error: Malformed matrix dimensions.\n"
-# //incompat_dims: .asciz "Error: Incompatible matrix dimensions.\n"
+msg_malformed_mat: .string "Error: Malformed matrix dimensions.\n"
+msg_incompat_dims: .string "Error: Incompatible matrix dimensions.\n"
 
 .text
 # =======================================================
