@@ -1,0 +1,15 @@
+# [remote "origin"]
+# 	url = https://github.com/Gravifer/UCB.CS61C-su25.git
+# 	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "teach-labs"]
+	url = https://github.com/61c-teach/su25-lab-starter.git
+	fetch = +refs/heads/*:refs/remotes/teach-labs/*
+[remote "teach-proj1"]
+	url = https://github.com/61c-teach/su25-proj1-starter.git
+	fetch = +refs/heads/*:refs/remotes/teach-proj1/*
+[remote "teach-proj2"]
+	url = https://github.com/61c-teach/su25-proj2-starter.git
+	fetch = +refs/heads/*:refs/remotes/teach-proj2/*
+[remote "teach-proj3"]
+	url = https://github.com/61c-teach/su25-proj3-starter.git
+	fetch = +refs/heads/*:refs/remotes/teach-proj3/*

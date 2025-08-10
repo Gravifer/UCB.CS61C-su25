@@ -1,0 +1,42 @@
+{
+    "files.readonlyInclude": {
+        "test.sh": true,
+        "tools/*": true,
+        "harnesses/*": true,
+    },
+    "material-icon-theme.files.associations": {
+        "*.circ": "logisim",
+        "*-test.circ": "logisim-harness",
+        "*-harness.circ": "logisim-harness",
+    },
+    "material-icon-theme.files.customClones": [
+        {
+            "name": "logisim",
+            "base": "verilog",
+            "color": "light-green-300",
+            "lightColor": "light-green-600",
+            "fileNames": ["*.circ"]
+        },
+        {
+            "name": "logisim-harness",
+            "base": "verilog",
+            "color": "teal-A700",
+            "fileNames": ["**-test.circ", "**-harness.circ"]
+        }
+    ],
+    "material-icon-theme.folders.customClones": [
+        {
+            "name": "cpu-src",
+            "base": "core",
+            "color": "green-500",
+            "folderNames": ["cpu"]
+        },
+        {
+            "name": "harness-src",
+            "base": "target",
+            "color": "teal-A700",
+            "folderNames": ["harnesses"]
+        },
+    ],
+    "hexeditor.columnWidth": 4,
+}
