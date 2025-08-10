@@ -273,5 +273,7 @@ Sessionx.vim
 /student.csv
 /student.out
 /tests/**/*.out
+!/tests/*/out/*.ref
+!/tests/*/out/*.piperef
 /tools/.hashes.json
 *.jar

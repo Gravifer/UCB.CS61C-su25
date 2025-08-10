@@ -11,6 +11,10 @@
 		{
       		"name": "Project-2",
 			"path": "../projs/proj2"
+		},
+		{
+      		"name": "Project-3",
+			"path": "../projs/proj3"
 		}
 	],
 	"settings": {
@@ -116,6 +120,26 @@
 			"useDocComment": false // (Optional) Use Doc Comments
 			}
 		],
+		"material-icon-theme.files.associations": {
+			"*.circ": "logisim",
+			"*-test.circ": "logisim-harness",
+			"*-harness.circ": "logisim-harness",
+		},
+		"material-icon-theme.files.customClones": [
+			{
+				"name": "logisim",
+				"base": "verilog",
+				"color": "light-green-300",
+				"lightColor": "light-green-600",
+				"fileNames": ["*.circ"]
+			},
+			{
+				"name": "logisim-harness",
+				"base": "verilog",
+				"color": "teal-A700",
+				"fileNames": ["**-test.circ", "**-harness.circ"]
+			}
+		],
 		"material-icon-theme.folders.customClones": [
 			{
 				"name": "test-src",
@@ -128,6 +152,18 @@
 				"base": "src",
 				"color": "teal-400",
 				"folderNames": ["coverage-src"]
+			},
+			{
+				"name": "cpu-src",
+				"base": "core",
+				"color": "green-500",
+				"folderNames": ["cpu"]
+			},
+			{
+				"name": "harness-src",
+				"base": "target",
+				"color": "teal-A700",
+				"folderNames": ["harnesses"]
 			},
 			{
 				"name": "projs",
@@ -145,7 +181,7 @@
 				"name": "proj",
 				"base": "project",
 				"color": "blue-600",
-				"folderNames": ["proj1", "proj2"]
+				"folderNames": ["proj1", "proj2", "proj3"]
 			},
 			{
 				"name": "lab",
@@ -157,7 +193,7 @@
 				"name": "proj-root",
 				"base": "project",
 				"color": "#98abb5",
-				"rootFolderNames": ["proj1", "proj2"]
+				"rootFolderNames": ["proj1", "proj2", "proj3"]
 			},
 			{
 				"name": "course",
