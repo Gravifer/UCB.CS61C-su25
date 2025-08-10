@@ -166,7 +166,8 @@
 				"folderNames": ["CS61C", "cs61c", "cs61c-2023", "cs61c-2024"],
 				"rootFolderNames": ["CS61C", "cs61c", "cs61c-2023", "cs61c-2024"]
 			}
-		]
+		],
+		"koka.languageServer.enabled": false
 	},
 	"launch": {
 		"version": "0.2.0",
