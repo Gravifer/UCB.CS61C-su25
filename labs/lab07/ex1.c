@@ -87,17 +87,40 @@ long long int sum_simd_unrolled(int vals[NUM_ELEMS]) {
     __m128i sum_vec, addend, mask;
     int tmp_arr[4] = {0, 0, 0, 0}; // Temporary array to store the result of the SIMD operation
 
-    for(unsigned int w = 0; w < OUTER_ITERATIONS; w++) {
-        /* YOUR CODE GOES HERE */
+    for(unsigned int w = 0; w < OUTER_ITERATIONS; w++) { // * see https://en.wikipedia.org/wiki/Duff%27s_device but don't use it
+        // //* YOUR CODE GOES HERE */
+        sum_vec = _mm_setzero_si128(); // Initialize sum vector to {0, 0, 0, 0} for each outer iteration
         /* Copy your sum_simd() implementation here, and unroll it */
-        for(unsigned int i = 0; i < NUM_ELEMS / 4 * 4; i += 4) {
-            if(vals[i] >= 128) result += vals[i];
-            if(vals[i + 1] >= 128) result += vals[i + 1];
-            if(vals[i + 2] >= 128) result += vals[i + 2];
-            if(vals[i + 3] >= 128) result += vals[i + 3];
+        for(unsigned int i = 0; i < NUM_ELEMS / 16 * 16; i += 16) {
+            addend  = _mm_loadu_si128((__m128i *) &vals[i]);
+            mask    = _mm_cmpgt_epi32(addend, _127);
+            addend  = _mm_and_si128(addend, mask);
+            sum_vec = _mm_add_epi32(sum_vec, addend);
+            addend  = _mm_loadu_si128((__m128i *) &vals[i+4]);
+            mask    = _mm_cmpgt_epi32(addend, _127);
+            addend  = _mm_and_si128(addend, mask);
+            sum_vec = _mm_add_epi32(sum_vec, addend);
+            addend  = _mm_loadu_si128((__m128i *) &vals[i+8]);
+            mask    = _mm_cmpgt_epi32(addend, _127);
+            addend  = _mm_and_si128(addend, mask);
+            sum_vec = _mm_add_epi32(sum_vec, addend);
+            addend  = _mm_loadu_si128((__m128i *) &vals[i+12]);
+            mask    = _mm_cmpgt_epi32(addend, _127);
+            addend  = _mm_and_si128(addend, mask);
+            sum_vec = _mm_add_epi32(sum_vec, addend);
         }
 
         /* Hint: you'll need 1 or maybe 2 tail cases here. */
+        for(unsigned int i = NUM_ELEMS / 16 * 16; i < NUM_ELEMS / 4 * 4; i += 4) {
+            addend  = _mm_loadu_si128((__m128i *) &vals[i]);
+            mask    = _mm_cmpgt_epi32(addend, _127);
+            addend  = _mm_and_si128(addend, mask);
+            sum_vec = _mm_add_epi32(sum_vec, addend);
+        }
+
+        _mm_storeu_si128((__m128i *) tmp_arr, sum_vec);
+        result += tmp_arr[0] + tmp_arr[1] + tmp_arr[2] + tmp_arr[3];
+
         for(unsigned int i = NUM_ELEMS / 4 * 4; i < NUM_ELEMS; i++) {
             if (vals[i] >= 128) {
              result += vals[i];
