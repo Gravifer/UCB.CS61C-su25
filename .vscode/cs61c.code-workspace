@@ -30,7 +30,8 @@
 			".gitignore": "ignore",
 			".prettierrc": "json",
 			"*.scm": "scheme",
-			"string.h": "c"
+			"string.h": "c",
+			"omp.h": "c"
 		},
 		"c-cpp-flylint.language": "c",
 		"c-cpp-flylint.cppcheck.enable": false,
