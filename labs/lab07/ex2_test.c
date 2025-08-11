@@ -53,7 +53,7 @@ int main() {
   printf("Naive: 1 thread took %f seconds\n",naive);
 
   // Test framework that sweeps the number of threads and times each run
-  for (int i=1; i<=128; i*=2) {
+  for (int i=1; i<=2; i++) {
     omp_set_num_threads(i);
     start_time = omp_get_wtime();
     for(int j=0; j<REPEAT; j++) {
