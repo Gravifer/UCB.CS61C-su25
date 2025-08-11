@@ -1,0 +1,4 @@
+[submodule "projs/proj3/pfp.proj3"]
+	path = projs/proj3/pfp.proj3
+	url = https://github.com/PKUFlyingPig/RISC-V_CPU.git
+	branch = master
